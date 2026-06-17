@@ -48,14 +48,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/6 pt-8 flex flex-col md:flex-row items-center
-                        justify-between gap-4 text-sm text-gray-600">
+        <div className="border-t border-white/6 pt-8 items-center gap-4 text-sm text-gray-600">
           <p>© {new Date().getFullYear()} FlowSync, Inc. All rights reserved.</p>
-          <p className="flex items-center gap-1.5">
-            Built with
-            <span className="text-red-500">♥</span>
-            for modern teams
-          </p>
         </div>
       </div>
     </footer>
