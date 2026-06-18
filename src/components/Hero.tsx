@@ -151,10 +151,14 @@ export default function Hero() {
           className="flex items-center justify-center gap-3 pt-2"
         >
           <div className="flex -space-x-2">
-            {['bg-indigo-500', 'bg-purple-500', 'bg-pink-500', 'bg-blue-500'].map((c, i) => (
-              <div key={i} className={`w-7 h-7 rounded-full ${c} border-2 border-gray-950
-                                       flex items-center justify-center text-xs font-bold`}>
-                {['A', 'B', 'C', 'D'][i]}
+            {[
+              'https://api.dicebear.com/9.x/avataaars/svg?seed=user1&backgroundColor=b6e3f4',
+              'https://api.dicebear.com/9.x/avataaars/svg?seed=user2&backgroundColor=c0aede',
+              'https://api.dicebear.com/9.x/avataaars/svg?seed=user3&backgroundColor=ffdfbf',
+              'https://api.dicebear.com/9.x/avataaars/svg?seed=user4&backgroundColor=d1d4f9',
+            ].map((src, i) => (
+              <div key={i} className="w-7 h-7 rounded-full border-2 border-gray-950 overflow-hidden bg-indigo-500">
+                <img src={src} alt="" className="w-full h-full object-cover" />
               </div>
             ))}
           </div>
@@ -166,6 +170,21 @@ export default function Hero() {
           <span className="text-sm text-gray-400">
             <span className="text-gray-200 font-medium">4.9/5</span> from 500+ reviews
           </span>
+        </motion.div>
+
+        {/* Press logos */}
+        <motion.div variants={itemVariants} className="pt-6 space-y-3">
+          <p className="text-gray-600 text-xs uppercase tracking-widest">Featured in</p>
+          <div className="flex items-center justify-center gap-6 flex-wrap">
+            {['TechCrunch', 'Product Hunt', 'Forbes', 'Y Combinator', 'The Verge'].map((name) => (
+              <span
+                key={name}
+                className="text-gray-500 font-semibold text-sm hover:text-gray-300 transition-colors cursor-default"
+              >
+                {name}
+              </span>
+            ))}
+          </div>
         </motion.div>
       </motion.div>
 

@@ -16,9 +16,20 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
       <p className="text-gray-300 text-sm leading-relaxed mb-6">"{t.text}"</p>
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className={`w-9 h-9 rounded-full ${t.color} flex items-center justify-center
-                           text-xs font-bold text-white flex-shrink-0`}>
-            {t.avatar}
+          <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-white/10">
+            <img
+              src={t.avatarUrl}
+              alt={t.name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                const el = e.currentTarget
+                el.style.display = 'none'
+                if (el.parentElement) {
+                  el.parentElement.className += ` ${t.color} flex items-center justify-center text-xs font-bold text-white`
+                  el.parentElement.textContent = t.avatar
+                }
+              }}
+            />
           </div>
           <div>
             <p className="text-sm font-semibold text-white">{t.name}</p>

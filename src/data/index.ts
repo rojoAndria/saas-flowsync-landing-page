@@ -114,6 +114,7 @@ export const testimonials = [
     name: 'Sarah Chen',
     role: 'Head of Ops · Stripe',
     avatar: 'SC',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=SarahChen&backgroundColor=b6e3f4',
     color: 'bg-indigo-500',
     rating: 5,
     text: 'FlowSync cut our manual reporting time by 80%. What used to take our team half a day now happens automatically every morning.',
@@ -122,6 +123,7 @@ export const testimonials = [
     name: 'Marcus Rivera',
     role: 'CTO · Notion',
     avatar: 'MR',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=MarcusRivera&backgroundColor=c0aede',
     color: 'bg-purple-500',
     rating: 5,
     text: 'The integration library is insane. We connected 12 tools in an afternoon. The ROI was immediate — we should have switched much sooner.',
@@ -130,6 +132,7 @@ export const testimonials = [
     name: 'Aiko Tanaka',
     role: 'Founder · Linear',
     avatar: 'AT',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=AikoTanaka&backgroundColor=ffdfbf',
     color: 'bg-pink-500',
     rating: 5,
     text: 'Best-in-class UX. The drag-and-drop editor is so intuitive our non-technical team built complex workflows without asking IT once.',
@@ -138,6 +141,7 @@ export const testimonials = [
     name: 'James Okafor',
     role: 'VP Engineering · Vercel',
     avatar: 'JO',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=JamesOkafor&backgroundColor=d1d4f9',
     color: 'bg-blue-500',
     rating: 5,
     text: '99.99% uptime is not just a marketing claim — we have been running mission-critical workflows for 8 months without a single failure.',
@@ -146,6 +150,7 @@ export const testimonials = [
     name: 'Elena Morozova',
     role: 'Director of Growth · Figma',
     avatar: 'EM',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=ElenaMorozova&backgroundColor=c1f0d4',
     color: 'bg-green-500',
     rating: 5,
     text: 'The AI suggestions are genuinely helpful. It spotted an inefficiency in our onboarding flow we had missed for months and fixed it automatically.',
@@ -154,9 +159,39 @@ export const testimonials = [
     name: 'David Park',
     role: 'COO · Loom',
     avatar: 'DP',
+    avatarUrl: 'https://api.dicebear.com/9.x/avataaars/svg?seed=DavidPark&backgroundColor=ffd5dc',
     color: 'bg-orange-500',
     rating: 5,
     text: 'Switched from Zapier and never looked back. FlowSync handles 10x the volume at a fraction of the cost. The support team is exceptional.',
+  },
+]
+
+// ─── FAQ ──────────────────────────────────────────────────────────────────────
+
+export const faqs = [
+  {
+    q: 'How long does it take to set up FlowSync?',
+    a: 'Most teams are up and running in under 10 minutes. Connect your first integration, drag a few blocks together, and your first automation is live. No onboarding calls, no professional services required.',
+  },
+  {
+    q: 'Do I need to know how to code?',
+    a: 'Not at all. FlowSync is built for non-technical users. Our visual editor uses plain language conditions and actions. If you can use a spreadsheet, you can build workflows.',
+  },
+  {
+    q: 'Is my data safe?',
+    a: 'Yes. FlowSync is SOC 2 Type II certified. All data is encrypted in transit (TLS 1.3) and at rest (AES-256). We never sell your data and you can export or delete it at any time.',
+  },
+  {
+    q: 'Can I cancel my subscription at any time?',
+    a: 'Absolutely. No lock-in, no cancellation fees. Cancel from your dashboard in one click and you will not be charged again. Your workflows stay accessible until the end of your billing period.',
+  },
+  {
+    q: 'What happens if I exceed my plan limits?',
+    a: 'We will notify you before you hit your limit. You can upgrade instantly from the dashboard or we can pause automations until the next billing cycle — your choice, never a surprise charge.',
+  },
+  {
+    q: 'Do you offer discounts for startups or non-profits?',
+    a: 'Yes. We offer 50% off for early-stage startups (under $1M ARR) and non-profit organizations. Reach out to our team with proof of status and we will apply the discount within 24 hours.',
   },
 ]
 

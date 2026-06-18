@@ -1,8 +1,17 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Check, Sparkles } from 'lucide-react'
 import { plans } from '../data'
 
 export default function Pricing() {
+  const [annual, setAnnual] = useState(false)
+
+  const getPrice = (price: string) => {
+    if (price === '$0' || price === 'Custom') return price
+    const monthly = parseInt(price.replace('$', ''))
+    return annual ? `$${Math.round(monthly * 0.8)}` : price
+  }
+
   return (
     <section id="pricing" className="py-32 px-4 relative">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
@@ -14,11 +23,55 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center space-y-4 mb-16"
+          className="text-center space-y-4 mb-10"
         >
           <p className="text-indigo-400 font-semibold text-sm uppercase tracking-widest">Pricing</p>
           <h2 className="text-4xl md:text-5xl font-bold">Simple, transparent pricing</h2>
           <p className="text-gray-400 text-lg">No hidden fees. Cancel anytime.</p>
+        </motion.div>
+
+        {/* Toggle mensuel / annuel */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex items-center justify-center gap-3 mb-14"
+        >
+          <span className={`text-sm font-medium transition-colors ${!annual ? 'text-white' : 'text-gray-500'}`}>
+            Monthly
+          </span>
+
+          <button
+            onClick={() => setAnnual(!annual)}
+            className={`relative w-12 h-6 rounded-full transition-colors duration-300
+                        ${annual ? 'bg-indigo-600' : 'bg-white/15'}`}
+          >
+            <motion.span
+              layout
+              transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+              className="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow"
+              style={{ left: annual ? '26px' : '2px' }}
+            />
+          </button>
+
+          <span className={`text-sm font-medium transition-colors ${annual ? 'text-white' : 'text-gray-500'}`}>
+            Annual
+          </span>
+
+          <AnimatePresence>
+            {annual && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.8, x: -6 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.8, x: -6 }}
+                className="px-2.5 py-1 rounded-full bg-green-500/15 border border-green-500/25
+                           text-green-400 text-xs font-semibold"
+              >
+                Save 20%
+              </motion.span>
+            )}
+          </AnimatePresence>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
@@ -50,10 +103,23 @@ export default function Pricing() {
                 <p className="text-gray-400 text-sm">{plan.desc}</p>
               </div>
 
-              <div className="flex items-end gap-1 mb-7">
-                <span className="text-5xl font-extrabold tracking-tight">{plan.price}</span>
+              <div className="flex items-end gap-1 mb-7 h-14">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={`${plan.name}-${annual}`}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                    className="text-5xl font-extrabold tracking-tight"
+                  >
+                    {getPrice(plan.price)}
+                  </motion.span>
+                </AnimatePresence>
                 {plan.price !== 'Custom' && (
-                  <span className="text-gray-400 mb-1.5 text-sm">/month</span>
+                  <span className="text-gray-400 mb-1.5 text-sm">
+                    /{annual ? 'mo, billed yearly' : 'month'}
+                  </span>
                 )}
               </div>
 
@@ -85,7 +151,6 @@ export default function Pricing() {
           ))}
         </div>
 
-        {/* Bottom note */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
