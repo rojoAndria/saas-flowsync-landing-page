@@ -114,7 +114,7 @@ export default function Hero() {
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed"
         >
           FlowSync connects your tools, automates your processes, and gives your
-          team back hours every week — no code required.
+          team back hours every week.
         </motion.p>
 
         {/* CTAs */}
